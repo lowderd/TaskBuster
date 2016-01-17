@@ -27,3 +27,9 @@ class HomeNewVisitorTest(StaticLiveServerTestCase):
         h1 = self.browser.find_elements_by_tag_name("h1")
         # Second h1 tag is the one that changed color, so index into list of elements
         self.assertEqual(h1[1].value_of_css_property("color"), "rgba(200, 50, 255, 1)")
+
+    def test_home_files(self):
+        self.browser.get(self.live_server_url + "/robots.txt")
+        self.assertNotIn("Not Found", self.browser.title)
+        self.browser.get(self.live_server_url + "/humans.txt")
+        self.assertNotIn("Not Found", self.browser.title)
