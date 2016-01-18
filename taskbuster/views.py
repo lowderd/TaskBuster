@@ -10,5 +10,5 @@ def home(request):
                                                      'now': now()})
 
 
-def home_files(request, filename    ):
+def home_files(request, filename):
     return render(request, filename, {}, content_type="text/plain")
